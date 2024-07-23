@@ -65,8 +65,10 @@ func OutputsFromChanges(changes []*plans.OutputChangeSrc) Outputs {
 
 	for _, change := range changes {
 		outputs[change.Addr.OutputValue.Name] = Output{
-			Sensitive: change.Sensitive,
-			Action:    changeAction(change.Action),
+			Sensitive:       change.Sensitive,
+			BeforeSensitive: change.BeforeSensitive,
+			AfterSensitive:  change.AfterSensitive,
+			Action:          changeAction(change.Action),
 		}
 	}
 
